@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -20,7 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
