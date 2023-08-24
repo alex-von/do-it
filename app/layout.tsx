@@ -1,4 +1,6 @@
-import './globals.css'
+import '@radix-ui/themes/styles.css';
+import { Theme, ThemePanel } from '@radix-ui/themes';
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Theme>
+        <body className={inter.className}>{children}</body>
+        <ThemePanel />
+      </Theme>
     </html>
   )
 }
