@@ -14,6 +14,8 @@ import {
 import SignOut from './ui/sign-out'
 import Link from 'next/link'
 import { GearIcon } from '@radix-ui/react-icons'
+import { Button } from '@/components/ui/button'
+
 
 const Nav = ({ user }: { user: User }) => {
     const pathname = usePathname()
@@ -25,6 +27,23 @@ const Nav = ({ user }: { user: User }) => {
                 <div className="flex justify-between items-center max-w-7xl mx-auto">
                     <div className="flex items-center gap-4">
                         <div className="w-10 h-10 border-[4px] border-primary rounded-[17px]" />
+                    </div>
+                    <div>
+                        <Button variant='ghost' className='hover:bg-' asChild>
+                            <Link href='/home'>
+                                Home
+                            </Link>
+                        </Button>
+                        <Button variant='ghost' asChild>
+                            <Link href='/tasks'>
+                                Tasks
+                            </Link>
+                        </Button>
+                        <Button variant='ghost' asChild>
+                            <Link href='/projects'>
+                                Projects
+                            </Link>
+                        </Button>
                     </div>
                     <div className="flex gap-4">
                         <DropdownMenu>
