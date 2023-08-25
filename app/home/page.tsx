@@ -16,7 +16,7 @@ const Home = async () => {
                     Welcome, <span className="font-semibold">{user.name.split(' ')[0]}!</span>
                 </h1>
                 <p>
-                    This is where you'll be able to see your tasks and projects.
+                    {"This is where you'll be able to see your tasks and projects."}
                 </p>
             </div>
         </div>
