@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
+import { ThemeToggle } from './theme-toggle'
 
 export const Footer = () => {
     return (
@@ -14,6 +15,7 @@ export const Footer = () => {
                         Made by <Link className="underline" href="https://github.com/alex-von" target='_blank'>Alex</Link>
                     </p>
                 </div>
+                <ThemeToggle />
                 <p className="text-xs text-muted-foreground">
                     © 2023 Alex Vongseng
                 </p>

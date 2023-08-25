@@ -37,7 +37,7 @@ const UserAuth = () => {
                 variant='outline'
                 type="button"
                 onClick={() => {
-                    setIsGitHubLoading(true)
+                    setIsGoogleLoading(true)
                     signIn("google")
                 }}
                 asChild

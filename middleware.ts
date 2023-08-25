@@ -13,7 +13,7 @@ export default withAuth(
         // Redirect to /home if user is authenticated and on an auth page
         if (isAuthPage) {
             if (isAuth) {
-            return NextResponse.redirect(new URL("/home", req.url))
+                return NextResponse.redirect(new URL("/home", req.url))
             }
     
             return null
@@ -22,11 +22,11 @@ export default withAuth(
         if (!isAuth) {
             let from = req.nextUrl.pathname;
             if (req.nextUrl.search) {
-            from += req.nextUrl.search;
+                from += req.nextUrl.search;
             }
     
             return NextResponse.redirect(
-            new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
+                new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
             );
         }
     },
