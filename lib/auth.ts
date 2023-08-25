@@ -7,7 +7,9 @@ import { Adapter } from "@auth/core/adapters"
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
-  
+    pages: {
+      signIn: "/login",
+    },
     session: {
         strategy: "jwt",
     },
