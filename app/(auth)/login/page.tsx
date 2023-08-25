@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Link from 'next/link'
+import { Button } from "@/components/ui/button"
 import { buttonVariants } from "@/components/ui/button"
 import { ChevronLeftIcon } from "@radix-ui/react-icons"
 import { cn } from "@/lib/utils"
@@ -12,20 +13,19 @@ export const metadata: Metadata = {
 
 const Login = () => {
     return (
-        <div className="container flex h-screen w-screen flex-col items-center justify-center">
-            <Link
-                href="/"
-                className={cn(
-                buttonVariants({ variant: "ghost" }),
-                "absolute left-4 top-4 md:left-8 md:top-8"
-                )}
-            >
-                <>
-                <ChevronLeftIcon className="mr-2 h-4 w-4" />
-                Back
-                </>
-            </Link>
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <div className='flex flex-grow flex-col items-center max-w-7xl w-screen'>
+            <div className='flex w-full gap-2 p-4 md:p-8'>
+                <Button variant='ghost'  asChild>
+                    <Link
+                        href="/"
+                        className=' text-accent-foreground hover:text-brand'
+                    >
+                        <ChevronLeftIcon className='w-4 h-4 mr-2' />
+                        Back
+                    </Link>
+                </Button>
+            </div>
+            <div className="mx-auto p-4 flex-grow flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                 <div className="flex flex-col items-center space-y-2 text-center">
                 <div className="w-10 h-10 border-[3px] border-primary rounded-2xl mb-4" />
                 <h1 className="text-2xl font-semibold tracking-tight">

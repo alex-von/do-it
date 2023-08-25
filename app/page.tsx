@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Main = () => {
   return (
-    <div className='flex flex-grow flex-col items-center'>
+    <div className='flex flex-grow w-screen flex-col items-center max-w-7xl'>
       <div className='flex justify-end w-full gap-2 p-4 md:p-8'>
         <Button variant='ghost'  asChild>
           <Link
@@ -26,7 +26,7 @@ const Main = () => {
       <div className='flex flex-grow flex-col items-center justify-center'>
         <div className='flex items-center gap-4'>
           <div className="w-14 h-14 border-[5px] border-primary rounded-[20px]" />
-          <h1 className="text-3xl font-semibold tracking-tight">
+          <h1 className=" bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent text-4xl font-semibold tracking-tight">
               do it
           </h1>
         </div>
