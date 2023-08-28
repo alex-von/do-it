@@ -16,7 +16,7 @@ export function ThemeToggle() {
   return (
     <Button variant="ghost"  onClick={toggleTheme}>
       {isDarkMode ? (
-          <MoonIcon className="" />
+          <MoonIcon />
       ) : (
           <SunIcon className=" dark:text-white" />
       )}

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Task } from "@/lib/types"
 import { Skeleton } from "@/components/ui/skeleton"
-import { CheckIcon } from "@radix-ui/react-icons"
+import TaskComponent from "@/components/tasks/task"
 
 const Tasks = () => {
     const [loading, setLoading] = useState(false)
@@ -23,6 +23,7 @@ const Tasks = () => {
         getTasks()
     }, [])
 
+    // create task
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log("Submitting")
@@ -31,14 +32,17 @@ const Tasks = () => {
         const task = {
             title,
         }
+        console.log("new task:", task)
         const res = await fetch('/api/task', {
             method: 'POST',
             body: JSON.stringify(task)
         })
         console.log(res)
         const newTask = await res.json()
+        console.log("API Response:", newTask)
         setTasks([...tasks, newTask])
     }
+
     return (
         <div className='flex flex-grow flex-col max-w-7xl w-screen p-4'>
             <div className="mx-auto w-full flex flex-col flex-grow">
@@ -57,7 +61,7 @@ const Tasks = () => {
                                 required
                             />
                             <Button type="submit" className="bg-primary-foreground text-primary-background">
-                                <CheckIcon />
+                                Create
                             </Button>
                         </form>
                     </div>
@@ -73,12 +77,7 @@ const Tasks = () => {
                                 {
                                     tasks.map((task) => (
                                         <li key={task.id}>
-                                            <div className="border border-muted-foreground p-4 rounded-2xl">
-                                                <h2 className="">{task.title}</h2>
-                                                {task.description && (
-                                                    <p className="text-muted-foreground">{task.description}</p>
-                                                )}
-                                            </div>
+                                            <TaskComponent task={task} />
                                         </li>
                                     ))
                                 }

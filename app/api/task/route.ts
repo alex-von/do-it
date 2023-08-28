@@ -42,10 +42,11 @@ export async function POST(request: NextRequest) {
             ...data,
             userId: user?.id
         }
+
         const task = await prisma.task.create({
             data: newTask
         })
-        
+
         return NextResponse.json( task , { status: 201 })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })

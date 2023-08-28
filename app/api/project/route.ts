@@ -27,7 +27,7 @@ export async function GET() {
     }
 }
 
-// Create a task
+// Create a project
 export async function POST(request: NextRequest) {
     try {
         const user = await getCurrentUser()
