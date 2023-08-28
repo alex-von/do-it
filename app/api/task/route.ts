@@ -21,7 +21,7 @@ export async function GET() {
             return NextResponse.json({ error: 'No tasks found' }, { status: 404 })
         }
 
-        return NextResponse.json({ tasks }, { status: 200 })
+        return NextResponse.json( tasks , { status: 200 })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })
     }
@@ -42,12 +42,11 @@ export async function POST(request: NextRequest) {
             ...data,
             userId: user?.id
         }
-
         const task = await prisma.task.create({
             data: newTask
         })
-
-        return NextResponse.json({ task }, { status: 201 })
+        
+        return NextResponse.json( task , { status: 201 })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })
     }
