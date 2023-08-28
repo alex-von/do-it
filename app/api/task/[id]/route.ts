@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getCurrentUser } from '@/lib/session'
 
-// Get task by id
 export async function GET(
+    request: NextRequest, 
     { params }: { params: { id: string } }
 ) {
     const id = params.id
@@ -28,7 +28,6 @@ export async function GET(
     }
 }
 
-// Update task by id
 export async function PUT(
     request: NextRequest, 
     { params }: { params: { id: string } }
@@ -54,8 +53,8 @@ export async function PUT(
     }
 }
 
-// Delete task by id
 export async function DELETE(
+    request: NextRequest, 
     { params }: { params: { id: string } }
 ) {
     const id = params.id
