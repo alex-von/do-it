@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Card } from "@/components/ui/card"
 import { Task } from "@/lib/types"
 
 const TaskComponent = ({ task }:{ task: Task}) => {
@@ -36,7 +37,7 @@ const TaskComponent = ({ task }:{ task: Task}) => {
     }, [data]);
 
     return (
-        <div className="flex items-center gap-4 border border-muted-foreground p-4 rounded-2xl">
+        <Card className="flex items-center gap-4 border p-4 rounded-2xl">
             <Checkbox className="w-9 h-9 border-[3.5px] rounded-[15px]"
                 onCheckedChange={(checked) => {
                     const updatedTask: Task = { ...data, completed: checked as boolean };
@@ -50,7 +51,7 @@ const TaskComponent = ({ task }:{ task: Task}) => {
                     <p className="text-muted-foreground text-sm">{data.description}</p>
                 </div>
             </Link>
-        </div>
+        </Card>
     )
 }
 
