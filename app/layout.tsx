@@ -25,7 +25,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <main className='flex flex-col min-h-screen bg-accent mx-auto items-center justify-center'>
+        <main className='flex flex-col min-h-screen bg-background mx-auto items-center justify-center'>
             <Nav user={user} />
             {children}
           </main>

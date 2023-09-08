@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getCurrentUser } from '@/lib/session'
 
-// Get all tasks
+// Get all projects
 export async function GET() {
     try {
         const user = await getCurrentUser()
@@ -11,23 +11,23 @@ export async function GET() {
             return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
         }
 
-        const tasks = await prisma.task.findMany({
+        const projects = await prisma.project.findMany({
             where: {
                 userId: user.id
             }
         })
 
-        if (!tasks) {
+        if (!projects) {
             return NextResponse.json({ error: 'No tasks found' }, { status: 404 })
         }
 
-        return NextResponse.json( tasks , { status: 200 })
+        return NextResponse.json( projects , { status: 200 })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })
     }
 }
 
-// Create a task
+// Create a project
 export async function POST(request: NextRequest) {
     try {
         const user = await getCurrentUser()
@@ -38,16 +38,15 @@ export async function POST(request: NextRequest) {
 
         const data = await request.json()
 
-        const newTask = {
+        const newProject = {
             ...data,
             userId: user?.id
         }
-
-        const task = await prisma.task.create({
-            data: newTask
+        const project = await prisma.task.create({
+            data: newProject
         })
-
-        return NextResponse.json( task , { status: 201 })
+        
+        return NextResponse.json( project , { status: 201 })
     } catch (error) {
         return NextResponse.json({ error }, { status: 500 })
     }

@@ -15,6 +15,22 @@ export type Task = {
     completed: boolean;
     completionDate?: Date;
     userId: string;
+    projectId?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
+export type Project = {
+    id: string;
+    title: string;
+    description?: string;
+    priority?: string;
+    progress?: string;
+    dueDate?: Date;
+    completed: boolean;
+    completionDate?: Date;
+    userId: string;
+    tasks?: Task[];
     createdAt?: Date;
     updatedAt?: Date;
 }
