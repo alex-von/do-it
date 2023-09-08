@@ -1,6 +1,9 @@
 import { Footer } from '@/components/footer'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
+import Nav from '@/components/nav'
+import { getCurrentUser } from '@/lib/session'
+import { User } from '@/lib/types'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -12,16 +15,20 @@ export const metadata: Metadata = {
   description: 'A todo app built with Next.js and Tailwind CSS',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const user = await getCurrentUser() as User
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+        <main className='flex flex-col min-h-screen bg-background mx-auto items-center justify-center'>
+            <Nav user={user} />
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

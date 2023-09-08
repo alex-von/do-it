@@ -1,28 +1,57 @@
-'use client'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { getCurrentUser } from '@/lib/session'
+import { EnterIcon } from '@radix-ui/react-icons'
 
-import Nav from '@/components/nav'
-import { Card } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
-import { useState } from 'react'
-export default function Home() {
-  const [checked, setChecked] = useState(false)
-
+const Main = async () => {
+  const user = await getCurrentUser()
   return (
-    <main className='flex flex-col min-h-screen'>
-      <Nav />
-      <div className='flex flex-col justify-center max-w-5xl mx-auto flex-grow w-full px-4'>
-        <Card className='flex items-center bg-primary-foreground gap-4 md:gap-8 p-4 md:p-8 border-[3px] rounded-3xl md:rounded-[30px] '>
-          <Checkbox 
-            checked={checked}
-            onCheckedChange={() => setChecked(!checked)}
-            className='w-9 md:w-12 h-9 md:h-12 rounded-[13px] md:rounded-[20px] border-[3px]' 
-          />
-          <div>
-            <h3 className={`md:text-xl font-medium ${checked ? 'line-through' : ''}`}>do it</h3>
-            <p className='text-sm md:text-lg text-muted-foreground'>Coming Soon</p>
-          </div>
-        </Card>
+    
+    <div className='flex flex-grow w-screen flex-col items-center max-w-7xl'>
+      <div className='flex justify-end w-full gap-2 p-4 md:p-8'>
+        {
+          !user ? (
+            <>
+              <Button variant='ghost'  asChild>
+                <Link
+                  href="/register"
+                  className='text-accent-foreground hover:text-brand'
+                >
+                  Register
+                </Link>
+              </Button>
+              <Button variant='ghost'  asChild>
+                <Link
+                  href="/login"
+                  className='text-accent-foreground hover:text-brand'
+                >
+                  Login
+                </Link>
+              </Button>
+            </>
+          ) : (
+            <Button variant='ghost'  asChild>
+              <Link
+                href="/home"
+                className='text-accent-foreground hover:text-brand'
+              >
+                Signed in as {user.name.split(' ')[0]}
+                <EnterIcon className='w-4 h-4 ml-3' />
+              </Link>
+            </Button>
+          )
+        }
       </div>
-    </main>
+      <div className='flex flex-grow flex-col items-center justify-center'>
+        <div className='flex items-center gap-4'>
+          <div className="w-14 h-14 border-[5px] border-primary rounded-[20px]" />
+          <h1 className=" bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent text-4xl font-semibold tracking-tight">
+              do it
+          </h1>
+        </div>
+      </div>
+    </div>
   )
 }
+
+export default Main
